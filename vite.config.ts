@@ -4,7 +4,7 @@ import path from "path";
 import { componentTagger } from "lovable-tagger";
 
 export default defineConfig(({ mode }) => ({
-  base: "/our-friendship/",
+  base: "/our-friendship/",   // 👈 THIS IS THE MAGIC LINE
   server: {
     host: "::",
     port: 8080,
