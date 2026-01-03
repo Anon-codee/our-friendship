@@ -1,0 +1,223 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&family=UnifrakturMaguntia&family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Warm vintage newspaper palette */
+    --background: 45 30% 96%;
+    --foreground: 30 10% 15%;
+
+    --card: 45 40% 94%;
+    --card-foreground: 30 10% 15%;
+
+    --popover: 45 30% 96%;
+    --popover-foreground: 30 10% 15%;
+
+    --primary: 30 10% 15%;
+    --primary-foreground: 45 30% 96%;
+
+    --secondary: 45 20% 88%;
+    --secondary-foreground: 30 10% 20%;
+
+    --muted: 45 15% 90%;
+    --muted-foreground: 30 8% 45%;
+
+    --accent: 38 70% 50%;
+    --accent-foreground: 30 10% 10%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 30 20% 82%;
+    --input: 30 20% 85%;
+    --ring: 38 70% 50%;
+
+    --radius: 0.5rem;
+
+    /* Custom tokens for birthday theme */
+    --newspaper-bg: 45 35% 93%;
+    --newspaper-border: 30 15% 75%;
+    --gold: 38 70% 50%;
+    --gold-light: 45 80% 70%;
+    --cream: 45 40% 96%;
+    --sepia: 30 25% 85%;
+    
+    /* Gradients */
+    --gradient-gold: linear-gradient(135deg, hsl(38 70% 50%), hsl(45 80% 65%));
+    --gradient-paper: linear-gradient(180deg, hsl(45 40% 96%), hsl(45 30% 90%));
+    
+    /* Shadows */
+    --shadow-vintage: 0 4px 20px -5px hsl(30 20% 30% / 0.15);
+    --shadow-card: 0 8px 30px -10px hsl(30 20% 20% / 0.2);
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 30 15% 10%;
+    --foreground: 45 20% 90%;
+
+    --card: 30 15% 12%;
+    --card-foreground: 45 20% 90%;
+
+    --popover: 30 15% 10%;
+    --popover-foreground: 45 20% 90%;
+
+    --primary: 45 20% 90%;
+    --primary-foreground: 30 15% 10%;
+
+    --secondary: 30 10% 18%;
+    --secondary-foreground: 45 20% 90%;
+
+    --muted: 30 10% 20%;
+    --muted-foreground: 45 10% 60%;
+
+    --accent: 38 70% 50%;
+    --accent-foreground: 30 10% 10%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 30 10% 22%;
+    --input: 30 10% 22%;
+    --ring: 38 70% 50%;
+
+    --newspaper-bg: 30 12% 14%;
+    --newspaper-border: 30 10% 25%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+  }
+
+  /* Typography classes */
+  .font-masthead {
+    font-family: 'UnifrakturMaguntia', cursive;
+  }
+
+  .font-headline {
+    font-family: 'Playfair Display', serif;
+  }
+
+  .font-body {
+    font-family: 'Crimson Text', serif;
+  }
+}
+
+@layer components {
+  /* Newspaper styling */
+  .newspaper-paper {
+    @apply bg-card;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    background-blend-mode: soft-light;
+    box-shadow: var(--shadow-card);
+  }
+
+  .newspaper-border {
+    @apply border-2 border-foreground/20;
+    border-image: linear-gradient(to right, transparent, hsl(var(--foreground) / 0.3), transparent) 1;
+  }
+
+  .newspaper-divider {
+    @apply h-px bg-gradient-to-r from-transparent via-foreground/30 to-transparent;
+  }
+
+  /* Animation utilities */
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .animate-bounce-slow {
+    animation: bounce-slow 2s ease-in-out infinite;
+  }
+
+  .animate-wiggle {
+    animation: wiggle 0.5s ease-in-out infinite;
+  }
+
+  .animate-fade-up {
+    animation: fade-up 0.8s ease-out forwards;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .text-shadow-vintage {
+    text-shadow: 1px 1px 2px hsl(var(--foreground) / 0.1);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes bounce-slow {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes wiggle {
+  0%, 100% {
+    transform: rotate(-3deg);
+  }
+  50% {
+    transform: rotate(3deg);
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes typewriter {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes carousel {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.animate-carousel {
+  animation: carousel 25s linear infinite;
+}
